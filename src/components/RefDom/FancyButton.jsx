@@ -1,10 +1,4 @@
-function FancyButton(props) {
-    return (
-        <button className="FancyButton">
-            {props.children}
-        </button>
-    )
-}
+import React from "react"
 
 const FancyButton = React.forwardRef((props,ref)=>(
     <button ref={ref} className="FancyButton">
@@ -12,6 +6,6 @@ const FancyButton = React.forwardRef((props,ref)=>(
     </button>
 ));
 
-const ref = React.createRef();
-<FancyButton ref={ref}>Click me!</FancyButton>;
 
+export default FancyButton
+// 首先通过react.forwardRef 对button进行包裹，其次在需要使用ref的地方使用creatRef创建变量进行绑定在该创建ref的组件中就可以获取到对应的dom了
