@@ -1,5 +1,5 @@
 import MyContext from './MyContext'
-
+import React, { Component } from 'react'
 class MyProvider extends Component {
     state = {
         cars: {
@@ -18,7 +18,7 @@ class MyProvider extends Component {
                         const cars = Object.assign({}, this.state.cars);
                         cars[selectedID].price = cars[selectedID].price + 1;
                         this.setState({ cars })
-                    };
+                    },
                     decrementPrice:selectedID => {
                         const cars = Object.assign({}, this.state.cars);
                         cars[selectedID].price = cars[selectedID].price -1;
@@ -29,3 +29,5 @@ class MyProvider extends Component {
         )
     }
 }
+
+export default MyProvider;

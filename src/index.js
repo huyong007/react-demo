@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const appRoot = document.getElementById('app-root');
+const modalRoot = document.getElementById('modal-root');
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
