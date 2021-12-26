@@ -1,2 +1,2 @@
-# react-demo
+# react-example
 
