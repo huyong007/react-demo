@@ -7,7 +7,7 @@ import Home from "./Home/Home";
 
 
 import SelfComponents from "./AppSelfComponents/SelfComponents";
-import SelfComponent from "./AppSelfComponents/SelfComponent";
+import { SelfComponent } from "./AppSelfComponents/SelfComponent";
 
 
 import Invoices from './AppInvoices/Invoices'

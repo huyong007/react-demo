@@ -1,24 +1,36 @@
 import { useParams } from 'react-router-dom';
-
 import React, { Component } from 'react';
 
 
-const asyncComponent = (importComponent,component) => {
-    return class extends Component {
+function getDisplayName(WrappedComponent) {
+    return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+
+
+const asyncComponent = (componentName) => (importComponent) => {
+    return class Async extends Component {
+        static displayName = `async(${getDisplayName(componentName)})`;
         state = {
             component: null
         }
 
+
         componentDidMount() {
-            importComponent(component)
+            importComponent(componentName)
                 .then(cmp => {
-                    this.setState({ component: cmp.default });
+                    this.setState({ component: cmp.default ? cmp.default : cmp });
                 });
         }
 
         render() {
             const C = this.state.component;
-            return C ? <C {...this.props} /> : null;
+            return (
+                <main style={{ padding: "1rem" }}>
+                    <h2>Current component:{componentName}</h2>
+                    {C ? <C {...this.props} /> : (<div>Loading....</div>)}
+                </main>
+
+            )
         }
     }
 };
@@ -26,22 +38,17 @@ const asyncComponent = (importComponent,component) => {
 
 
 
-export default function SelfComponent() {
+export function SelfComponent() {
     const path = useParams();
-    console.log(path, 'path');
-    const component = path.componentName.split('-').map(item => item.replace(/^\S/, s => s.toUpperCase())).join('')
-    console.log(component, 'component');
-    
+    const component = path.componentName.split('/').reduce((a, b) => a + b.split('-').map(item => item.replace(/^\S/, s => s.toUpperCase())).join(''), '')
+
     const loadComponent = (component) => {
-        return import(`./${component}`);
+        return import(`./${component}/${component}`);
     }
-    const CurrentComponent = asyncComponent(loadComponent,component)
+
+
+    const CurrentComponent = asyncComponent(component)(loadComponent);
     return (
-
-        <main style={{ padding: "1rem" }}>
-            <h2>Current component:{component}</h2>
-            <CurrentComponent />
-        </main>
-
+        <CurrentComponent />
     )
 }

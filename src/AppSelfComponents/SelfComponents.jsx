@@ -1,4 +1,4 @@
-import { Switch, Route, Link, Outlet } from 'react-router-dom'
+import { Switch, Route, NavLink, Outlet } from 'react-router-dom'
 
 
 
@@ -12,13 +12,19 @@ export default function SelfComponents() {
         <>
             <nav>
                 {selfComponentsConfig.map(({ path, component }) => (
-                    <Link
+                    <NavLink
                         className='react-link'
                         to={`/self-components/${path}`}
                         key={path}
+                        style={({ isActive }) => {
+                            return {
+                                display: "inline-block",
+                                color: isActive ? "red" : "black"
+                            }
+                        }}
                     >
                         {component}
-                    </Link>
+                    </NavLink>
                 ))}
             </nav>
             <Outlet /></>

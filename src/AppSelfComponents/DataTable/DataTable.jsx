@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDataApi } from '../services/server';
+import { useDataApi } from '../../services/server';
 
 const path = 'users';
 export default function DataTable() {

@@ -2,10 +2,8 @@ import React, { useState, useEffect, useReducer } from 'react';
 
 const host = 'https://jsonplaceholder.typicode.com/';
 const useDataApi = (initialUrl, initialData) => {
-    const [data, setData] = useState(initialData);
     const [url, setUrl] = useState(host + initialUrl);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(false);
+
 
     const dataFetchReducer = (state, action) => {
         switch (action.type) {
@@ -33,23 +31,36 @@ const useDataApi = (initialUrl, initialData) => {
         }
     }
 
+    const [state, dispatch] = useReducer(dataFetchReducer, {
+        isLoading: false,
+        isError: false,
+        data: initialData,
+    })
+
     useEffect(() => {
+        let didCancel = false;
+
         const fetchData = async () => {
-            setIsError(false);
-            setIsLoading(true);
+            dispatch({ type: 'FETCH_INIT' });
             try {
                 const result = await fetch(url).then(res => res.json());
-                setIsLoading(false);
-                setData(result);
+                if (!didCancel) {
+                    dispatch({ type: 'FETCH_SUCCESS', payload: result });
+                }
             } catch (error) {
-                setIsError(true);
+                if (!didCancel) {
+                    dispatch({ type: 'FETCH_FAILURE' });
+                }
             }
         }
         fetchData();
+        return () => {
+            didCancel = true;
+        }
     }, [url]);
 
     const doFetch = (url) => setUrl(host + url);
-    return { data, isLoading, isError, doFetch };
+    return { ...state, doFetch };
 }
 
 export { useDataApi };
