@@ -1,7 +1,7 @@
 import React from "react";
-import logProps from './LogProps';
+import logProps from '../components/LogProps';
 
-import FancyButton from './RefDom/FancyButton'
+import FancyButton from '../components/RefDom/FancyButton'
 
 class FileInput extends React.Component {
     constructor(props) {

@@ -1,0 +1,1 @@
+export let DataTable = ['The', 'development', 'server', 'has', 'disconnected']

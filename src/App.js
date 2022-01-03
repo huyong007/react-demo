@@ -1,40 +1,54 @@
 
 
 import React from "react";
-import DataTable from './components/DataTable'
-import Input from './components/Input'
-import FileInput from './components/FileInput'
-import Calculator from './components/boilingWater/Calculator'
-import WithoutContext from './components/Context/WithoutContext'
-import FancyButton from "./components/RefDom/FancyButton";
-import MyProvider from "./components/Context/MyProvider";
-import LogFancyButton from "./components/RefDom/Log"
-import ListOfTenThings from "./components/PropsChildren/PropsChildren";
-import CounterButton from "./components/PropsChildren/CounterButton";
-import AutoFocusTextInput from "./components/RefDom/CreateRef";
+import { Routes, Route } from 'react-router-dom'
+
+import Home from "./Home/Home";
+
+
+import SelfComponents from "./AppSelfComponents/SelfComponents";
+import SelfComponent from "./AppSelfComponents/SelfComponent";
+
+
+import Invoices from './AppInvoices/Invoices'
+import Invoice from './AppInvoices/Invoice'
+
 import './App.css';
 
-const pepole = ['John', 'Jesse']
-const ref = React.createRef();
+
 function App() {
   return (
     <div className="App">
       <div id="modal-root"></div>
-      <header className="App-header" id="app-root">
-        <Calculator />
-        <FileInput />
-        <Input type="text" placeholder="Insert some text here..." callback={(val) => console.log(val)} />
-        <DataTable data={pepole} />
-        <WithoutContext />
-        <MyProvider />
-        <FancyButton ref={ref} >click me!</FancyButton>
-        <LogFancyButton ref={ref} />
-        <ListOfTenThings />
-        <CounterButton />
-        <AutoFocusTextInput />
-      </header>
-      
-    </div>
+      {/* <header className="App-header" id="app-root">
+        <h1>React Demo</h1>
+      </header> */}
+      <div>
+        <div className="left-content"></div>
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="self-components" element={<SelfComponents />} >
+              <Route index element={<main style={{ "padding": "1rem" }}><p>Select an component</p></main>} />
+              <Route path=":componentName" element={<SelfComponent />} />
+            </Route>
+            <Route path="Invoices" element={<Invoices />} >
+              <Route index element={<main style={{ "padding": "1rem" }}><p>Select an Invoice</p></main>} />
+              <Route path=":invoiceId" element={<Invoice />} />
+            </Route>
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: '20px' }}>
+                  <p>There is nothing here!</p>
+                </main>
+              }
+            />
+          </Routes>
+        </div>
+        <div className="right-content"></div>
+      </div>
+    </div >
   );
 }
 
