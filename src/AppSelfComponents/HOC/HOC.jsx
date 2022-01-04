@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 
-HOC = (Component) => {
+const HOC = (Component) => {
     return class extends React.Component {
         constructor() {
             super();
@@ -14,14 +14,19 @@ HOC = (Component) => {
         }
     }
 
+}
 
-    @HOC
-    export default class extends Component {
-        say() {
-            const { name } = this.props;
-            console.log(name);
-        }
-        render() {
-            return <div>hello,world <button onClick={this.say.bind(this)}>点击</button></div>
-        }
+
+
+@HOC
+class HocIndex extends Component {
+    say() {
+        const { name } = this.props;
+        console.log(name);
     }
+    render() {
+        return <div>hello,world <button onClick={this.say.bind(this)}>点击</button></div>
+    }
+}
+
+export default HocIndex;

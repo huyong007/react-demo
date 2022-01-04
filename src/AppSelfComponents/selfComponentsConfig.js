@@ -3,6 +3,7 @@ let selfComponentsConfig = [
     { path: 'input', component: 'Input' },
     { path: 'tree-view', component: 'TreeView' },
     { path: 'file-input', component: 'FileInput' },
+    { path: 'hoc', component: 'Hoc' },
 ];
 
 
