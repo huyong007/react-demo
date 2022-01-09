@@ -4,6 +4,7 @@ import { Component } from 'react';
 class MutationObserver extends Component {
   state = {
     text: 1,
+    time:new Date().getTime()
   }
 
   componentDidMount() {
@@ -12,7 +13,7 @@ class MutationObserver extends Component {
 
   changeText() {
     this.setState((prevState) => {
-      return { text: prevState.text + 1 }
+      return { text: prevState.text + 1, time: new Date().getTime() }
     })
   }
 
@@ -46,13 +47,14 @@ class MutationObserver extends Component {
       }
 
       // @ts-ignore
-      function check(records) {
+      function check(records, observer) {
+        console.log(records, observer, 'records,observer')
         records.forEach(function (record) {
-          const { type, target } = record;
+          const { type, target, oldValue } = record;
           if (type === 'childList') {
             console.log(target, 'childList')
           } else if (type === 'characterData') {
-            console.log(target, 'characterData')
+            console.log(oldValue, 'oldValue', target, 'characterData')
           } else {
             console.log('strange')
           }
@@ -73,10 +75,12 @@ class MutationObserver extends Component {
   }
 
   render() {
+    const { time, text } = this.state;
     return (
       <div id="MutationObserver" >
         <div>{`当前文本是${this.state.text}`}</div>
-        <button onClick={()=>this.changeText()}>changeText</button>
+        <button onClick={() => this.changeText()}>changeText</button>
+        <div>current Time:{time}</div>
       </div>
     )
   }
