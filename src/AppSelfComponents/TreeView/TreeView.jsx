@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 
-import Loading from "../../components/Loading/Loading";
+import { ClassLoading } from "../../components/Loading/Loading";
 import './treeView.css';
 
 
@@ -22,7 +22,7 @@ class TreeView extends Component {
             isLast = true,
             isChildElement = false,
             isParentToggled = true } = this.props
-            const { isToggled } = this.state
+        const { isToggled } = this.state
         return (
             <div
                 style={{ marginLeft: isChildElement ? 16 : 4 + "px" }}
@@ -67,18 +67,7 @@ class TreeView extends Component {
 }
 
 
-class Test extends Component {
-    constructor(props) {
-        super();
-    }
 
-    render() {
-        const { data } = this.props;
-        return (
-            <div>{Object.keys(data).length === 0 ? 'loading' : null}</div>
-        )
-    }
-}
 
 export default class extends Component {
     state = {
@@ -91,7 +80,7 @@ export default class extends Component {
     }
     render() {
         const { data } = this.state;
-        const LoadingTreeView = Loading(props => {
+        const LoadingTreeView = ClassLoading(props => {
             return Object.keys(props.data).length == 0;
         })(TreeView)
         return (

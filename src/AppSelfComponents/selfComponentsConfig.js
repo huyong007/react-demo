@@ -4,6 +4,7 @@ let selfComponentsConfig = [
     { path: 'tree-view', component: 'TreeView' },
     { path: 'file-input', component: 'FileInput' },
     { path: 'hoc', component: 'Hoc' },
+    { path: 'mutation-observer', component: 'MutationObserver' },
 ];
 
 
