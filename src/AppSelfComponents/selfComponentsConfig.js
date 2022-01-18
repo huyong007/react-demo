@@ -5,6 +5,12 @@ let selfComponentsConfig = [
     { path: 'file-input', component: 'FileInput' },
     { path: 'hoc', component: 'Hoc' },
     { path: 'mutation-observer', component: 'MutationObserver' },
+    { path: 'reverse-inheritance', component: 'ReverseInheritance' },
+    { path: 'property-proxy', component: 'PropertyProxy' },
+    { path: 'split-rendering', component: 'SplitRendering' },
+    { path: 'control-render', component: 'ControlRender' },
+
+
 ];
 
 

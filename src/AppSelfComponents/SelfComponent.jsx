@@ -16,6 +16,7 @@ const asyncComponent = (componentName) => (importComponent) => {
 
 
         componentDidMount() {
+            if (this.state.component) return;
             importComponent(componentName)
                 .then(cmp => {
                     this.setState({ component: cmp.default ? cmp.default : cmp });

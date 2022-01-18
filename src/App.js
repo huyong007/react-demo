@@ -15,6 +15,15 @@ import Invoice from './AppInvoices/Invoice'
 
 import './App.css';
 
+const urlListener = (e) => {
+  const href = window.location.href;
+  console.log(e, href, 'onhashchange-hashchange')
+
+}
+window.addEventListener('hashchange', urlListener)
+window.addEventListener('popstate', function(event) {
+  console.log(event);
+})
 
 function App() {
   return (
