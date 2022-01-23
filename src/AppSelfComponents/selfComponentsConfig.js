@@ -9,6 +9,8 @@ let selfComponentsConfig = [
     { path: 'property-proxy', component: 'PropertyProxy' },
     { path: 'split-rendering', component: 'SplitRendering' },
     { path: 'control-render', component: 'ControlRender' },
+    { path: 'throttle-render', component: 'ThrottleRender' },
+
 
 
 ];
