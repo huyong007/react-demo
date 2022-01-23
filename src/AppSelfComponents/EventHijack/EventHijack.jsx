@@ -33,24 +33,24 @@ function EventHijack(props) {
 
 }
 
-// @HOC
-// class EventHijack1 extends React.Component {
-//     handleClick = (e) => {
-//         console.log('click');
-//         e.stopPropagation();
-//     }
+@HOC
+class EventHijack1 extends React.Component {
+    handleClick = (e) => {
+        console.log('click');
+        e.stopPropagation();
+    }
 
-//     render() {
-//         return (
-//             <button onClick={(e) => this.handleClick(e)}>class click</button>
-//         )
-//     }
-// }
-
+    render() {
+        return (
+            <button onClick={(e) => this.handleClick(e)}>class click</button>
+        )
+    }
+}
+const FunctionEventHijack = HOC(EventHijack)
 export default () => {
     return <div>
-        <EventHijack />
+        <FunctionEventHijack />
         &nbsp;
-        {/* <EventHijack1 /> */}
+        <EventHijack1 />
     </div>
 };
