@@ -10,6 +10,7 @@ let selfComponentsConfig = [
     { path: 'split-rendering', component: 'SplitRendering' },
     { path: 'control-render', component: 'ControlRender' },
     { path: 'throttle-render', component: 'ThrottleRender' },
+    { path: 'event-hijack', component: 'EventHijack' },
 
 
 
