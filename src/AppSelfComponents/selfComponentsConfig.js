@@ -11,6 +11,8 @@ let selfComponentsConfig = [
     { path: 'control-render', component: 'ControlRender' },
     { path: 'throttle-render', component: 'ThrottleRender' },
     { path: 'event-hijack', component: 'EventHijack' },
+    { path: 'ref-hoc', component: 'RefHoc' },
+
 
 
 

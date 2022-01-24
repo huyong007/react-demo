@@ -13,9 +13,9 @@ const HOC = (Component) => function WrapComponent(props) {
             current.removeEventListener('click', handleClick)
         }
     })
-    return <div ref={dom}>
+    return <span ref={dom}>
         <Component {...props} />
-    </div>
+    </span>
 }
 
 
@@ -24,11 +24,7 @@ function EventHijack(props) {
 
     const [num, setNum] = React.useState(0)
     return (
-        <div>
-            <h1>EventHijack</h1>
-            <p>{num}</p>
-            <button onClick={() => setNum(num + 1)}>function click</button>
-        </div>
+        <button onClick={() => setNum(num + 1)}>function click</button>
     )
 
 }
