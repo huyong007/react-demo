@@ -12,6 +12,9 @@ let selfComponentsConfig = [
     { path: 'throttle-render', component: 'ThrottleRender' },
     { path: 'event-hijack', component: 'EventHijack' },
     { path: 'ref-hoc', component: 'RefHoc' },
+    { path: 'memo', component: 'Memo' },
+    { path: 'ref-dom', component: 'RefDom' },
+    { path: 'clone-element', component: 'CloneElement' },
 
 
 
