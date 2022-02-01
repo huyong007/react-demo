@@ -15,6 +15,7 @@ let selfComponentsConfig = [
     { path: 'memo', component: 'Memo' },
     { path: 'ref-dom', component: 'RefDom' },
     { path: 'clone-element', component: 'CloneElement' },
+    { path: 'context', component: 'Context' },
 
 
 
