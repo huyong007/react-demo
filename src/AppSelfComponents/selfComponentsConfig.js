@@ -17,7 +17,8 @@ let selfComponentsConfig = [
     { path: 'clone-element', component: 'CloneElement' },
     { path: 'context', component: 'Context' },
     { path: 'password-revealer', component: 'PasswordRevealer' },
-
+    { path: 'star-rating', component: 'StarRating' },
+    
 
 
 
